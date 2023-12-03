@@ -1,3 +1,4 @@
+
 import prismadb from "@/lib/prismadb";
 import { UsersForm } from "./components/user-form";
 
@@ -9,11 +10,11 @@ const UserPage = async ({
     }
 }) =>{
 
-    const user = await prismadb.user.findUnique({
+    const user = await prismadb.user.findFirst({
         where:{
             id: params.userId
         }
-    });
+    })
 
     return(
         <div className="flex-col">

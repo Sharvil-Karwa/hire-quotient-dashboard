@@ -7,16 +7,19 @@ import { UserColumn, columns } from "./coulmns"
 import { Heading } from "@/components/ui/heading"
 import { Separator } from "@/components/ui/separator"
 import { DataTable } from "@/components/ui/data-table"
+import axios from "axios"
 
 interface UserClientProps{
-    data: UserColumn[]
-}
+    data: UserColumn[] | any
+} 
+
+
 
 export const UserClient: React.FC<UserClientProps> = ({
     data
 }) =>{
     const router = useRouter();
-
+  
 
     const filters = [
         {

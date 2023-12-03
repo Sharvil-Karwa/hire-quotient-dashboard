@@ -52,8 +52,6 @@ export async function POST(
 export async function GET(req: Request) {
   try {
 
-    
-
     const users = await prismadb.user.findMany();
 
 

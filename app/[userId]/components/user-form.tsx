@@ -35,7 +35,7 @@ const formSchema = z.object({
 type UsersFormValues = z.infer<typeof formSchema>
 
 interface UsersFormProps {
-  initialData: User | null;
+  initialData: User | any;
 };
 
 export const UsersForm: React.FC<UsersFormProps> = ({
@@ -65,7 +65,6 @@ export const UsersForm: React.FC<UsersFormProps> = ({
   });
   
 
-
   const onSubmit = async (data: UsersFormValues) => {
     try {
       setLoading(true);
@@ -85,12 +84,11 @@ export const UsersForm: React.FC<UsersFormProps> = ({
         });
       }
       toast.success(toastMessage)
-      router.push(`/`);
-      router.refresh();
     } catch (error: any) {
       toast.error('User already exists');
     } finally {
       setLoading(false);
+      router.push(`/`)
     }
   };
   
@@ -100,13 +98,13 @@ export const UsersForm: React.FC<UsersFormProps> = ({
     try {
       setLoading(true);
       await axios.delete(`/api/${params.userId}`);
-      router.push(`/`);
       toast.success('User deleted.');
     } catch (error: any) {
       toast.error('Something went wrong');
     } finally {
       setLoading(false);
       setOpen(false);
+      router.push(`/`);
     }
   }
 

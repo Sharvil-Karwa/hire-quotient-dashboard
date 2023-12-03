@@ -113,8 +113,8 @@ state:{
 }
 }) 
 
-  const [filter, setFilter] = useState("")
-  const [label, setLabel] = useState("")
+  const [filter, setFilter] = useState("id")
+  const [label, setLabel] = useState("Id")
   const [openFilter, setOpenFilter] = useState(false)
 
   return (

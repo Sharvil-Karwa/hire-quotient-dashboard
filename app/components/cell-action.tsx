@@ -5,7 +5,6 @@ import { CircleEllipsis, Copy, Edit, MoreHorizontal, Trash } from "lucide-react"
 import { toast } from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
 import { 
   DropdownMenu, 
   DropdownMenuContent, 
@@ -57,9 +56,7 @@ export const CellAction: React.FC<CellActionProps> = ({
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="mx-2">
             <CircleEllipsis />
-          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
@@ -69,7 +66,7 @@ export const CellAction: React.FC<CellActionProps> = ({
             <Copy className="mr-2 h-4 w-4" /> Copy Id
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={() => router.push(`/${params.auditId}/Users/${data.id}`)}
+            onClick={() => {}}
           >
             <Edit className="mr-2 h-4 w-4" /> Update
           </DropdownMenuItem>

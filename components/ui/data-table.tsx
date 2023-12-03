@@ -45,7 +45,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Check, ChevronsUpDown, PlusCircle, Briefcase, TableIcon} from "lucide-react"
+import { Check, ChevronsUpDown, PlusCircle, Briefcase, TableIcon, Trash} from "lucide-react"
 
 interface Filter {
   label : string
@@ -60,6 +60,7 @@ interface DataTableProps<TData, TValue> {
 }
 
 import * as XLSX from "xlsx";
+import prismadb from "@/lib/prismadb"
 
 
 function exportToExcel<T>(data: T[], filename: string) {
@@ -78,6 +79,8 @@ function exportToExcel<T>(data: T[], filename: string) {
   URL.revokeObjectURL(url);
 }
 
+
+
 export function DataTable<TData, TValue>({
   columns,
   data,
@@ -89,7 +92,6 @@ export function DataTable<TData, TValue>({
   )
   const [sorting, setSorting] = React.useState<SortingState>([])
 
-  console.log(filters)
   
 const [columnVisibility, setColumnVisibility] =
 React.useState<VisibilityState>({})
@@ -146,8 +148,6 @@ state:{
             <PopoverContent className="w-[200px] p-0">
               <Command>
                 <CommandList>
-                  {/* <CommandInput placeholder="Search filter..." />
-                  <CommandEmpty>No filter found.</CommandEmpty> */}
                   <CommandGroup heading="Filters">
                     {filters && filters.map((f) => (
                       <CommandItem
@@ -203,6 +203,8 @@ state:{
             }}>
               Export selected data as excel <TableIcon className="ml-2"/>
             </Button> 
+
+            
             
         </div> 
         <div className="rounded-md border">

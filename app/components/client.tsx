@@ -15,6 +15,8 @@ interface UserClientProps{
 export const UserClient: React.FC<UserClientProps> = ({
     data
 }) =>{
+    const router = useRouter();
+
 
     const filters = [
         {

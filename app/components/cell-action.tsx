@@ -15,6 +15,7 @@ import {
 import { AlertModal } from "@/components/modals/alert-modal";
 
 import { UserColumn } from "./coulmns";
+import axios from "axios";
 
 interface CellActionProps {
   data: UserColumn;
@@ -31,6 +32,7 @@ export const CellAction: React.FC<CellActionProps> = ({
   const onConfirm = async () => {
     try {
       setLoading(true);
+      await axios.delete(`/api/${data.id}`)
       toast.success('User deleted.');
       router.refresh();
     } catch (error) {
@@ -66,7 +68,7 @@ export const CellAction: React.FC<CellActionProps> = ({
             <Copy className="mr-2 h-4 w-4" /> Copy Id
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={() => {}}
+            onClick={() => {router.push(`/${data.id}`)}}
           >
             <Edit className="mr-2 h-4 w-4" /> Update
           </DropdownMenuItem>
